@@ -7,11 +7,13 @@ import '../../../../shared/extensions/context_extensions.dart';
 class SearchBarWidget extends StatelessWidget {
   final VoidCallback? onTap;
   final VoidCallback? onVoiceTap;
+  final bool showBorder;
 
   const SearchBarWidget({
     super.key,
     this.onTap,
     this.onVoiceTap,
+    this.showBorder = false,
   });
 
   @override
@@ -25,15 +27,14 @@ class SearchBarWidget extends StatelessWidget {
           vertical: AppSizes.paddingM,
         ),
         decoration: BoxDecoration(
-          color: AppColors.white,
+          color: AppColors.background,
           borderRadius: BorderRadius.circular(AppSizes.radiusM),
-          boxShadow: [
-            BoxShadow(
-              color: AppColors.black.withValues(alpha: 0.08),
-              blurRadius: 12,
-              offset: const Offset(0, 2),
-            ),
-          ],
+          border: showBorder
+              ? Border.all(
+                  color: AppColors.primary,
+                  width: AppSizes.borderWidth,
+                )
+              : null,
         ),
         child: Row(
           children: [

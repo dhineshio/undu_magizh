@@ -16,6 +16,8 @@ class ExplorePage extends StatefulWidget {
 
 class _ExplorePageState extends State<ExplorePage> {
   int _currentCarouselIndex = 0;
+  final ScrollController _scrollController = ScrollController();
+  bool _isCollapsed = false;
   
   final List<String> _carouselImages = [
     'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800',
@@ -26,6 +28,34 @@ class _ExplorePageState extends State<ExplorePage> {
   ];
 
   @override
+  void initState() {
+    super.initState();
+    _scrollController.addListener(_onScroll);
+  }
+
+  @override
+  void dispose() {
+    _scrollController.removeListener(_onScroll);
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  void _onScroll() {
+    final screenHeight = context.screenHeight;
+    final carouselHeight = screenHeight * 0.3;
+    
+    // Check if scrolled past the carousel
+    final isCollapsed = _scrollController.hasClients &&
+        _scrollController.offset > (carouselHeight - kToolbarHeight);
+    
+    if (isCollapsed != _isCollapsed) {
+      setState(() {
+        _isCollapsed = isCollapsed;
+      });
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     final screenHeight = context.screenHeight;
     final carouselHeight = screenHeight * 0.3; // 30% for carousel
@@ -33,14 +63,35 @@ class _ExplorePageState extends State<ExplorePage> {
     return Scaffold(
       backgroundColor: AppColors.background,
       body: CustomScrollView(
+        controller: _scrollController,
         slivers: [
           // SliverAppBar with carousel
           SliverAppBar(
             pinned: true,
             expandedHeight: carouselHeight,
+            collapsedHeight: 70, // Increased height for collapsed state
+            toolbarHeight: 70, // Increased toolbar height
             backgroundColor: AppColors.background,
             surfaceTintColor: Colors.transparent,
             elevation: 0,
+            shape: _isCollapsed
+                ? Border(
+                    bottom: BorderSide(
+                      color: AppColors.border,
+                      width: AppSizes.borderWidthThin,
+                    ),
+                  )
+                : null,
+            // Show only search bar when collapsed
+            title: _isCollapsed
+                ? Padding(
+                    padding: const EdgeInsets.only(right: AppSizes.paddingM),
+                    child: SearchBarWidget(
+                      onTap: () {},
+                      onVoiceTap: () {},
+                    ),
+                  )
+                : null,
             flexibleSpace: FlexibleSpaceBar(
               background: Stack(
                 fit: StackFit.expand,
