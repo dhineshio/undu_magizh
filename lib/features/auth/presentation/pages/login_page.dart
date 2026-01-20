@@ -76,34 +76,15 @@ class _LoginPageState extends State<LoginPage> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      // App icon/logo
+                      // App logo
                       AppSizes.height,
-                      Container(
-                        width: AppSizes.imageThumb,
-                        height: AppSizes.imageThumb,
-                        decoration: BoxDecoration(
-                          color: AppColors.white.withValues(alpha: 0.2),
-                          shape: BoxShape.circle,
-                          border: Border.all(
-                            color: AppColors.white.withValues(alpha: 0.5),
-                            width: AppSizes.borderWidthThick,
-                          ),
-                        ),
-                        child: const Icon(
-                          Icons.eco_outlined,
-                          size: AppSizes.iconXL,
-                          color: AppColors.white,
-                        ),
+                      Image.asset(
+                        'assets/logo.png',
+                        width: AppSizes.imageS,
+                        height: AppSizes.imageS,
+                        fit: BoxFit.contain,
                       ),
-                      AppSizes.heightM,
-                      Text(
-                        AppStrings.appName,
-                        style: context.textTheme.headlineMedium?.copyWith(
-                          color: AppColors.white,
-                          fontWeight: FontWeight.bold,
-                          letterSpacing: 1,
-                        ),
-                      ),
+
                     ],
                   ),
                 ),

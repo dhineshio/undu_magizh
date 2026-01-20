@@ -46,25 +46,14 @@ class _SplashPageState extends State<SplashPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // App name
-              Text(
-                AppStrings.appName,
-                style: context.textTheme.displayMedium?.copyWith(
-                  fontWeight: FontWeight.bold,
-                  color: AppColors.white,
-                  letterSpacing: 1.5,
-                ),
+              // App Logo
+              Image.asset(
+                'assets/logo.png',
+                width: context.screenWidth * 0.5,
+                height: context.screenWidth * 0.5,
+                fit: BoxFit.contain,
               ),
-              AppSizes.heightS,
-              // Tagline
-              Text(
-                'Food & Happiness',
-                style: context.textTheme.titleMedium?.copyWith(
-                  fontWeight: FontWeight.w300,
-                  color: AppColors.white.withValues(alpha: 0.9),
-                  letterSpacing: 2,
-                ),
-              ),
+
             ],
           ),
         ),

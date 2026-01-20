@@ -6,9 +6,9 @@ class AppColors {
   AppColors._();
 
   // Primary Colors (Green Family)
-  static const Color primary = Color(0xFF158c43);
+  static const Color primary = Color(0xFF9a2617);
   static const Color primaryLight = Color(0xFF81C784);
-  static const Color primaryDark = Color(0xFF000103);
+  static const Color primaryDark = Color(0xFF1f0401);
   static const Color primaryVariant = Color(0xFF66BB6A);
 
   // Secondary Colors
