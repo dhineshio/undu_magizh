@@ -5,16 +5,16 @@ import 'package:flutter/material.dart';
 class AppColors {
   AppColors._();
 
-  // Primary Colors (Green Family)
+  // Primary Colors (Red-Brown Family)
   static const Color primary = Color(0xFF9a2617);
-  static const Color primaryLight = Color(0xFF81C784);
+  static const Color primaryLight = Color(0xFFc14a38);
   static const Color primaryDark = Color(0xFF1f0401);
-  static const Color primaryVariant = Color(0xFF66BB6A);
+  static const Color primaryVariant = Color(0xFF7a1e11);
 
   // Secondary Colors
-  static const Color secondary = Color(0xFF8BC34A);
-  static const Color secondaryLight = Color(0xFFAED581);
-  static const Color secondaryDark = Color(0xFF689F38);
+  static const Color secondary = Color(0xFFfdf0bc);
+  static const Color secondaryLight = Color(0xFFfef8dd);
+  static const Color secondaryDark = Color(0xFFe8d89a);
 
   // Accent Colors
   static const Color accent = Color(0xFF009688);
