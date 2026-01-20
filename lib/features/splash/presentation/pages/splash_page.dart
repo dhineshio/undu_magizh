@@ -21,7 +21,7 @@ class _SplashPageState extends State<SplashPage> {
     // Navigate to explore (main app) after delay
     Future.delayed(const Duration(seconds: 3), () {
       if (mounted) {
-        context.go(RouteNames.explore);
+        context.go(RouteNames.login);
       }
     });
   }

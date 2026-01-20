@@ -4,7 +4,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_sizes.dart';
 import '../../../../shared/extensions/context_extensions.dart';
+import '../../../../shared/widgets/section_label.dart';
 import '../widgets/location_badge.dart';
+import '../widgets/food_card.dart';
+import '../widgets/explore_card.dart';
 import '../widgets/search_bar_widget.dart';
 
 /// Explore page - Main discovery screen
@@ -82,6 +85,168 @@ class _ExplorePageState extends State<ExplorePage> {
   ];
 
   int _selectedCategoryIndex = 0;
+
+  final List<Map<String, String>> _recommendedFoods = [
+    {
+      'name': 'Chicken Biryani',
+      'image':
+          'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=400',
+      'offer': '20% OFF',
+    },
+    {
+      'name': 'Butter Chicken',
+      'image':
+          'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=400',
+      'offer': '30% OFF',
+    },
+    {
+      'name': 'Paneer Tikka',
+      'image':
+          'https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?w=400',
+      'offer': '15% OFF',
+    },
+    {
+      'name': 'Masala Dosa',
+      'image':
+          'https://images.unsplash.com/photo-1630383249896-424e482df921?w=400',
+      'offer': '25% OFF',
+    },
+    {
+      'name': 'Veg Fried Rice',
+      'image':
+          'https://images.unsplash.com/photo-1512058564366-18510be2db19?w=400',
+      'offer': '10% OFF',
+    },
+    {
+      'name': 'Tandoori Chicken',
+      'image':
+          'https://images.unsplash.com/photo-1610057099443-fde8c4d50f91?w=400',
+      'offer': '35% OFF',
+    },
+    {
+      'name': 'Hyderabadi Biryani',
+      'image':
+          'https://images.unsplash.com/photo-1589302168068-964664d93dc0?w=400',
+      'offer': '40% OFF',
+    },
+    {
+      'name': 'Chicken Tikka',
+      'image':
+          'https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=400',
+      'offer': '18% OFF',
+    },
+    {
+      'name': 'Palak Paneer',
+      'image':
+          'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=400',
+      'offer': '22% OFF',
+    },
+    {
+      'name': 'Naan Bread',
+      'image':
+          'https://images.unsplash.com/photo-1628840042765-356cda07504e?w=400',
+      'offer': '12% OFF',
+    },
+    {
+      'name': 'Dal Makhani',
+      'image':
+          'https://images.unsplash.com/photo-1546833998-877b37c2e5c6?w=400',
+      'offer': '28% OFF',
+    },
+    {
+      'name': 'Chicken Kebab',
+      'image':
+          'https://images.unsplash.com/photo-1529042410759-befb1204b468?w=400',
+      'offer': '33% OFF',
+    },
+    {
+      'name': 'Gulab Jamun',
+      'image':
+          'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=400',
+      'offer': '20% OFF',
+    },
+    {
+      'name': 'Samosa',
+      'image':
+          'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=400',
+      'offer': '15% OFF',
+    },
+    {
+      'name': 'Chole Bhature',
+      'image':
+          'https://images.unsplash.com/photo-1626074353765-517a681e40be?w=400',
+      'offer': '26% OFF',
+    },
+    {
+      'name': 'Fish Curry',
+      'image':
+          'https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=400',
+      'offer': '31% OFF',
+    },
+  ];
+
+  final List<Map<String, dynamic>> _exploreItems = [
+    {
+      'name': 'Paradise Biryani',
+      'image':
+          'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=600',
+      'cuisine': 'Biryani, North Indian, Chinese',
+      'rating': 4.3,
+      'distance': '2.5 km',
+      'deliveryTime': '30-35 min',
+      'price': '₹250 for two',
+      'isVeg': false,
+      'offer': '50% OFF up to ₹100',
+    },
+    {
+      'name': 'Green Leaf Restaurant',
+      'image':
+          'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600',
+      'cuisine': 'South Indian, Pure Veg',
+      'rating': 4.5,
+      'distance': '1.8 km',
+      'deliveryTime': '25-30 min',
+      'price': '₹200 for two',
+      'isVeg': true,
+      'offer': '40% OFF up to ₹80',
+    },
+    {
+      'name': 'Tandoor House',
+      'image':
+          'https://images.unsplash.com/photo-1610057099443-fde8c4d50f91?w=600',
+      'cuisine': 'North Indian, Tandoor, Kebabs',
+      'rating': 4.6,
+      'distance': '3.2 km',
+      'deliveryTime': '35-40 min',
+      'price': '₹350 for two',
+      'isVeg': false,
+      'offer': '60% OFF up to ₹120',
+    },
+    {
+      'name': 'Dosa Plaza',
+      'image':
+          'https://images.unsplash.com/photo-1630383249896-424e482df921?w=600',
+      'cuisine': 'South Indian, Dosa, Breakfast',
+      'rating': 4.4,
+      'distance': '1.5 km',
+      'deliveryTime': '20-25 min',
+      'price': '₹150 for two',
+      'isVeg': true,
+      'offer': '30% OFF',
+    },
+    {
+      'name': 'Spice Garden',
+      'image':
+          'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=600',
+      'cuisine': 'Indian, Chinese, Continental',
+      'rating': 4.2,
+      'distance': '2.8 km',
+      'deliveryTime': '30-35 min',
+      'price': '₹300 for two',
+      'isVeg': false,
+      'offer': '50% OFF up to ₹100',
+    },
+  ];
 
   @override
   void initState() {
@@ -311,10 +476,7 @@ class _ExplorePageState extends State<ExplorePage> {
               maxHeight: 130,
               child: Container(
                 color: AppColors.background,
-                padding: const EdgeInsets.only(
-                  top: AppSizes.paddingS,
-                  bottom: AppSizes.paddingS,
-                ),
+                padding: const EdgeInsets.only(top: AppSizes.paddingS),
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   padding: const EdgeInsets.symmetric(
@@ -410,8 +572,109 @@ class _ExplorePageState extends State<ExplorePage> {
             ),
           ),
 
+          // Recommended For You section
+          SliverToBoxAdapter(
+            child: SectionLabel(
+              label: 'Recommended For You',
+              actionText: 'See All',
+              onActionTap: () {
+                // Handle see all action
+              },
+            ),
+          ),
+
+          SliverToBoxAdapter(child: AppSizes.heightM),
+          // Recommended food items - dual row horizontal scroll
+          SliverToBoxAdapter(
+            child: SizedBox(
+              height: 300,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                padding: const EdgeInsets.symmetric(
+                  horizontal: AppSizes.paddingM,
+                ),
+                itemCount: (_recommendedFoods.length / 2).ceil(),
+                itemBuilder: (context, index) {
+                  final firstIndex = index * 2;
+                  final secondIndex = firstIndex + 1;
+
+                  return Padding(
+                    padding: const EdgeInsets.only(right: AppSizes.spaceM),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        // First card
+                        FoodCard(
+                          imageUrl: _recommendedFoods[firstIndex]['image']!,
+                          name: _recommendedFoods[firstIndex]['name']!,
+                          offer: _recommendedFoods[firstIndex]['offer'],
+                          onTap: () {
+                            // Handle card tap
+                          },
+                        ),
+                        const SizedBox(height: AppSizes.spaceM),
+                        // Second card
+                        if (secondIndex < _recommendedFoods.length)
+                          FoodCard(
+                            imageUrl: _recommendedFoods[secondIndex]['image']!,
+                            name: _recommendedFoods[secondIndex]['name']!,
+                            offer: _recommendedFoods[secondIndex]['offer'],
+                            onTap: () {
+                              // Handle card tap
+                            },
+                          ),
+                      ],
+                    ),
+                  );
+                },
+              ),
+            ),
+          ),
+
+          // Spacing after recommended section
+          SliverToBoxAdapter(child: AppSizes.heightM),
+
+          // Explore More section
+          SliverToBoxAdapter(
+            child: SectionLabel(
+              label: 'Explore More',
+              actionText: 'See All',
+              onActionTap: () {
+                // Handle see all action
+              },
+            ),
+          ),
+          SliverToBoxAdapter(child: AppSizes.heightM),
+
+          // Explore items - full width cards
+          SliverPadding(
+            padding: const EdgeInsets.symmetric(horizontal: AppSizes.paddingM),
+            sliver: SliverList(
+              delegate: SliverChildBuilderDelegate(
+                (context, index) {
+                  final item = _exploreItems[index];
+                  return ExploreCard(
+                    imageUrl: item['image'],
+                    name: item['name'],
+                    cuisine: item['cuisine'],
+                    rating: item['rating'],
+                    distance: item['distance'],
+                    deliveryTime: item['deliveryTime'],
+                    price: item['price'],
+                    isVeg: item['isVeg'],
+                    offer: item['offer'],
+                    onTap: () {
+                      // Handle card tap
+                    },
+                  );
+                },
+                childCount: _exploreItems.length,
+              ),
+            ),
+          ),
+
           // Bottom spacing
-          SliverToBoxAdapter(child: const SizedBox(height: 700)),
+          SliverToBoxAdapter(child: const SizedBox(height: 100)),
         ],
       ),
     );
