@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import '../../../../core/constants/app_colors.dart';
-import '../../../../shared/extensions/context_extensions.dart';
-import '../../../../shared/widgets/empty_widget.dart';
 
 /// Orders page - Active orders
 class OrdersPage extends StatelessWidget {
