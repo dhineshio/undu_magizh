@@ -18,10 +18,10 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
-    // Navigate to home after delay
+    // Navigate to explore (main app) after delay
     Future.delayed(const Duration(seconds: 3), () {
       if (mounted) {
-        context.go(RouteNames.home);
+        context.go(RouteNames.login);
       }
     });
   }

@@ -3,7 +3,12 @@ import 'package:go_router/go_router.dart';
 import '../../features/auth/presentation/pages/login_page.dart';
 import '../../features/auth/presentation/pages/otp_page.dart';
 import '../../features/example/presentation/pages/example_page.dart';
+import '../../features/explore/presentation/pages/explore_page.dart';
+import '../../features/history/presentation/pages/history_page.dart';
+import '../../features/orders/presentation/pages/orders_page.dart';
+import '../../features/profile/presentation/pages/profile_page.dart';
 import '../../features/splash/presentation/pages/splash_page.dart';
+import '../widgets/main_scaffold.dart';
 import 'route_names.dart';
 
 /// App router configuration using GoRouter
@@ -45,11 +50,53 @@ class AppRouter {
       },
     ),
 
-    // Home route
-    GoRoute(
-      path: RouteNames.home,
-      name: RouteNames.home,
-      builder: (context, state) => const _HomePage(),
+    // Main app with bottom navigation
+    StatefulShellRoute.indexedStack(
+      builder: (context, state, navigationShell) {
+        return MainScaffold(navigationShell: navigationShell);
+      },
+      branches: [
+        // Explore
+        StatefulShellBranch(
+          routes: [
+            GoRoute(
+              path: RouteNames.explore,
+              name: RouteNames.explore,
+              builder: (context, state) => const ExplorePage(),
+            ),
+          ],
+        ),
+        // Orders
+        StatefulShellBranch(
+          routes: [
+            GoRoute(
+              path: RouteNames.orders,
+              name: RouteNames.orders,
+              builder: (context, state) => const OrdersPage(),
+            ),
+          ],
+        ),
+        // History
+        StatefulShellBranch(
+          routes: [
+            GoRoute(
+              path: RouteNames.history,
+              name: RouteNames.history,
+              builder: (context, state) => const HistoryPage(),
+            ),
+          ],
+        ),
+        // Profile
+        StatefulShellBranch(
+          routes: [
+            GoRoute(
+              path: RouteNames.profile,
+              name: RouteNames.profile,
+              builder: (context, state) => const ProfilePage(),
+            ),
+          ],
+        ),
+      ],
     ),
 
     // Example feature routes
@@ -71,62 +118,6 @@ class AppRouter {
 
     // Add more routes here
   ];
-}
-
-// Temporary home page
-class _HomePage extends StatelessWidget {
-  const _HomePage();
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Undu Magizh'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Icon(
-              Icons.check_circle_outline,
-              size: 80,
-              color: Colors.green,
-            ),
-            const SizedBox(height: 24),
-            Text(
-              'Project Setup Complete! ✨',
-              style: Theme.of(context).textTheme.headlineSmall,
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 16),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 32),
-              child: Text(
-                'GoRouter is configured and ready to use.',
-                textAlign: TextAlign.center,
-              ),
-            ),
-            const SizedBox(height: 32),
-            ElevatedButton.icon(
-              onPressed: () {
-                context.pushNamed(RouteNames.example);
-              },
-              icon: const Icon(Icons.rocket_launch),
-              label: const Text('Go to Example Page'),
-            ),
-            const SizedBox(height: 16),
-            OutlinedButton.icon(
-              onPressed: () {
-                context.pushNamed(RouteNames.login);
-              },
-              icon: const Icon(Icons.phone_android),
-              label: const Text('Test Login Page'),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
 }
 
 // Temporary detail page
@@ -201,7 +192,7 @@ class _ErrorPage extends StatelessWidget {
               ),
             const SizedBox(height: 32),
             ElevatedButton(
-              onPressed: () => context.go(RouteNames.home),
+              onPressed: () => context.go(RouteNames.explore),
               child: const Text('Go Home'),
             ),
           ],

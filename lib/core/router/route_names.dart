@@ -4,7 +4,12 @@ class RouteNames {
 
   // Root
   static const String splash = '/';
-  static const String home = '/home';
+  
+  // Main app with bottom navigation
+  static const String explore = '/explore';
+  static const String orders = '/orders';
+  static const String history = '/history';
+  static const String profile = '/profile';
 
   // Example feature
   static const String example = '/example';
@@ -16,9 +21,8 @@ class RouteNames {
   static const String register = '/register';
   static const String forgotPassword = '/forgot-password';
 
-  // Profile (example)
-  static const String profile = '/profile';
-  static const String editProfile = '/profile/edit';
+  // Settings
+  static const String editProfile = '/edit-profile';
   static const String settings = '/settings';
 
   // Add your feature routes here

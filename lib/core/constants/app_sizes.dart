@@ -63,7 +63,7 @@ class AppSizes {
   static const double appBarElevation = 0.0;
 
   // Bottom Navigation Bar
-  static const double bottomNavHeight = 60.0;
+  static const double bottomNavHeight = 80.0;
 
   // Card
   static const double cardElevation = 2.0;

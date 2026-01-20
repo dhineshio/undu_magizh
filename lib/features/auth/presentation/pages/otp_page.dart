@@ -62,7 +62,7 @@ class _OtpPageState extends State<OtpPage> {
       Future.delayed(const Duration(seconds: 2), () {
         if (mounted) {
           setState(() => _isLoading = false);
-          context.go(RouteNames.home);
+          context.go(RouteNames.explore);
           context.showSnackBar('OTP verified successfully!');
         }
       });
@@ -311,18 +311,6 @@ class _OtpPageState extends State<OtpPage> {
             ),
           ),
 
-          // Loading overlay
-          if (_isLoading)
-            Positioned.fill(
-              child: Container(
-                color: AppColors.black.withValues(alpha: 0.3),
-                child: const Center(
-                  child: CircularProgressIndicator(
-                    color: AppColors.white,
-                  ),
-                ),
-              ),
-            ),
         ],
       ),
     );
