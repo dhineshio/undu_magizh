@@ -1,8 +1,10 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_sizes.dart';
+import '../../../../core/router/route_names.dart';
 import '../../../../shared/extensions/context_extensions.dart';
 import '../../../../shared/widgets/section_label.dart';
 import '../widgets/location_badge.dart';
@@ -89,99 +91,115 @@ class _ExplorePageState extends State<ExplorePage> {
   final List<Map<String, String>> _recommendedFoods = [
     {
       'name': 'Chicken Biryani',
-      'image':
-          'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=400',
+      'image': 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=400',
       'offer': '20% OFF',
+      'price': '₹320',
+      'description': 'Authentic Hyderabadi Dum Biryani served with Mirchi ka Salan and Raita.',
     },
     {
       'name': 'Butter Chicken',
-      'image':
-          'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=400',
+      'image': 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=400',
       'offer': '30% OFF',
+      'price': '₹280',
+      'description': 'Creamy and buttery chicken curry topped with fresh cream.',
     },
     {
       'name': 'Paneer Tikka',
-      'image':
-          'https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?w=400',
+      'image': 'https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?w=400',
       'offer': '15% OFF',
+      'price': '₹220',
+      'description': 'Marinated paneer cubes grilled to perfection in a tandoor.',
     },
     {
       'name': 'Masala Dosa',
-      'image':
-          'https://images.unsplash.com/photo-1630383249896-424e482df921?w=400',
+      'image': 'https://images.unsplash.com/photo-1630383249896-424e482df921?w=400',
       'offer': '25% OFF',
+      'price': '₹120',
+      'description': 'Thin and crispy crepe filled with spiced potato masala.',
     },
     {
       'name': 'Veg Fried Rice',
-      'image':
-          'https://images.unsplash.com/photo-1512058564366-18510be2db19?w=400',
+      'image': 'https://images.unsplash.com/photo-1512058564366-18510be2db19?w=400',
       'offer': '10% OFF',
+      'price': '₹180',
+      'description': 'Wok-tossed rice with fresh seasonal vegetables and spices.',
     },
     {
       'name': 'Tandoori Chicken',
-      'image':
-          'https://images.unsplash.com/photo-1610057099443-fde8c4d50f91?w=400',
+      'image': 'https://images.unsplash.com/photo-1610057099443-fde8c4d50f91?w=400',
       'offer': '35% OFF',
+      'price': '₹350',
+      'description': 'Spiced chicken marinated in yogurt and grilled in traditional clay oven.',
     },
     {
       'name': 'Hyderabadi Biryani',
-      'image':
-          'https://images.unsplash.com/photo-1589302168068-964664d93dc0?w=400',
+      'image': 'https://images.unsplash.com/photo-1589302168068-964664d93dc0?w=400',
       'offer': '40% OFF',
+      'price': '₹380',
+      'description': 'Signature Hyderabadi style slow-cooked dum biryani.',
     },
     {
       'name': 'Chicken Tikka',
-      'image':
-          'https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=400',
+      'image': 'https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=400',
       'offer': '18% OFF',
+      'price': '₹240',
+      'description': 'Boneless chicken chunks marinated in spices and yogurt.',
     },
     {
       'name': 'Palak Paneer',
-      'image':
-          'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=400',
+      'image': 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=400',
       'offer': '22% OFF',
+      'price': '₹190',
+      'description': 'Healthy spinach gravy with soft cottage cheese cubes.',
     },
     {
       'name': 'Naan Bread',
-      'image':
-          'https://images.unsplash.com/photo-1628840042765-356cda07504e?w=400',
+      'image': 'https://images.unsplash.com/photo-1628840042765-356cda07504e?w=400',
       'offer': '12% OFF',
+      'price': '₹40',
+      'description': 'Traditional oven-baked flatbread.',
     },
     {
       'name': 'Dal Makhani',
-      'image':
-          'https://images.unsplash.com/photo-1546833998-877b37c2e5c6?w=400',
+      'image': 'https://images.unsplash.com/photo-1546833998-877b37c2e5c6?w=400',
       'offer': '28% OFF',
+      'price': '₹160',
+      'description': 'Slow-cooked black lentils with cream and butter.',
     },
     {
       'name': 'Chicken Kebab',
-      'image':
-          'https://images.unsplash.com/photo-1529042410759-befb1204b468?w=400',
+      'image': 'https://images.unsplash.com/photo-1529042410759-befb1204b468?w=400',
       'offer': '33% OFF',
+      'price': '₹210',
+      'description': 'Succulent minced chicken skewers grilled to perfection.',
     },
     {
       'name': 'Gulab Jamun',
-      'image':
-          'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=400',
+      'image': 'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=400',
       'offer': '20% OFF',
+      'price': '₹80',
+      'description': 'Traditional sweet milk dumplings in sugar syrup.',
     },
     {
       'name': 'Samosa',
-      'image':
-          'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=400',
+      'image': 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=400',
       'offer': '15% OFF',
+      'price': '₹30',
+      'description': 'Deep-fried pastry filled with spiced potatoes and peas.',
     },
     {
       'name': 'Chole Bhature',
-      'image':
-          'https://images.unsplash.com/photo-1626074353765-517a681e40be?w=400',
+      'image': 'https://images.unsplash.com/photo-1626074353765-517a681e40be?w=400',
       'offer': '26% OFF',
+      'price': '₹140',
+      'description': 'Spiced chickpeas served with fluffy deep-fried bread.',
     },
     {
       'name': 'Fish Curry',
-      'image':
-          'https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=400',
+      'image': 'https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=400',
       'offer': '31% OFF',
+      'price': '₹420',
+      'description': 'Fresh fish cooked in a tangy and spicy coconut gravy.',
     },
   ];
 
@@ -308,7 +326,10 @@ class _ExplorePageState extends State<ExplorePage> {
                 : null,
             // Show only search bar when collapsed
             title: _isCollapsed
-                ? SearchBarWidget(onTap: () {}, onVoiceTap: () {})
+                ? SearchBarWidget(
+                    onTap: () => GoRouter.of(context).push(RouteNames.search),
+                    onVoiceTap: () {},
+                  )
                 : null,
             flexibleSpace: FlexibleSpaceBar(
               background: Stack(
@@ -431,7 +452,10 @@ class _ExplorePageState extends State<ExplorePage> {
                           ),
                           Spacer(),
                           // Search bar below location
-                          SearchBarWidget(onTap: () {}, onVoiceTap: () {}),
+                          SearchBarWidget(
+                            onTap: () => GoRouter.of(context).push(RouteNames.search),
+                            onVoiceTap: () {},
+                          ),
                           AppSizes.heightM,
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -609,7 +633,7 @@ class _ExplorePageState extends State<ExplorePage> {
                           name: _recommendedFoods[firstIndex]['name']!,
                           offer: _recommendedFoods[firstIndex]['offer'],
                           onTap: () {
-                            // Handle card tap
+                            GoRouter.of(context).push(RouteNames.foodDetails, extra: _recommendedFoods[firstIndex]);
                           },
                         ),
                         const SizedBox(height: AppSizes.spaceM),
@@ -620,7 +644,7 @@ class _ExplorePageState extends State<ExplorePage> {
                             name: _recommendedFoods[secondIndex]['name']!,
                             offer: _recommendedFoods[secondIndex]['offer'],
                             onTap: () {
-                              // Handle card tap
+                              GoRouter.of(context).push(RouteNames.foodDetails, extra: _recommendedFoods[secondIndex]);
                             },
                           ),
                       ],

@@ -108,7 +108,7 @@ class ExploreCard extends StatelessWidget {
                   ),
               ],
             ),
-            
+
             // Details section
             Padding(
               padding: const EdgeInsets.all(AppSizes.paddingM),
@@ -147,7 +147,9 @@ class ExploreCard extends StatelessWidget {
                             width: 6,
                             height: 6,
                             decoration: BoxDecoration(
-                              color: isVeg ? AppColors.success : AppColors.error,
+                              color: isVeg
+                                  ? AppColors.success
+                                  : AppColors.error,
                               shape: BoxShape.circle,
                             ),
                           ),
@@ -156,7 +158,7 @@ class ExploreCard extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: AppSizes.spaceXS),
-                  
+
                   // Cuisine
                   Text(
                     cuisine,
@@ -168,7 +170,7 @@ class ExploreCard extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                   ),
                   const SizedBox(height: AppSizes.spaceM),
-                  
+
                   // Rating, Distance, Time, Price
                   Row(
                     children: [
@@ -202,7 +204,7 @@ class ExploreCard extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(width: AppSizes.spaceM),
-                      
+
                       // Distance
                       Icon(
                         Icons.location_on_outlined,
@@ -218,7 +220,7 @@ class ExploreCard extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(width: AppSizes.spaceM),
-                      
+
                       // Delivery time
                       Icon(
                         Icons.access_time,
@@ -234,7 +236,7 @@ class ExploreCard extends StatelessWidget {
                         ),
                       ),
                       const Spacer(),
-                      
+
                       // Price
                       Text(
                         price,

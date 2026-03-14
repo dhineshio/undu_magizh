@@ -4,8 +4,11 @@ import '../../features/auth/presentation/pages/login_page.dart';
 import '../../features/auth/presentation/pages/otp_page.dart';
 import '../../features/example/presentation/pages/example_page.dart';
 import '../../features/explore/presentation/pages/explore_page.dart';
-import '../../features/history/presentation/pages/history_page.dart';
+import '../../features/explore/presentation/pages/food_details_page.dart';
+import '../../features/explore/presentation/pages/search_page.dart';
+import '../../features/favorites/presentation/pages/history_page.dart';
 import '../../features/orders/presentation/pages/orders_page.dart';
+import '../../features/profile/presentation/pages/edit_profile_page.dart';
 import '../../features/profile/presentation/pages/profile_page.dart';
 import '../../features/splash/presentation/pages/splash_page.dart';
 import '../widgets/main_scaffold.dart';
@@ -80,8 +83,8 @@ class AppRouter {
         StatefulShellBranch(
           routes: [
             GoRoute(
-              path: RouteNames.history,
-              name: RouteNames.history,
+              path: RouteNames.favorites,
+              name: RouteNames.favorites,
               builder: (context, state) => const HistoryPage(),
             ),
           ],
@@ -117,6 +120,24 @@ class AppRouter {
     ),
 
     // Add more routes here
+    GoRoute(
+      path: RouteNames.editProfile,
+      name: RouteNames.editProfile,
+      builder: (context, state) => const EditProfilePage(),
+    ),
+    GoRoute(
+      path: RouteNames.foodDetails,
+      name: RouteNames.foodDetails,
+      builder: (context, state) {
+        final foodData = state.extra as Map<String, dynamic>? ?? {};
+        return FoodDetailsPage(foodData: foodData);
+      },
+    ),
+    GoRoute(
+      path: RouteNames.search,
+      name: RouteNames.search,
+      builder: (context, state) => const SearchPage(),
+    ),
   ];
 }
 
@@ -129,9 +150,7 @@ class _ExampleDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Example Detail'),
-      ),
+      appBar: AppBar(title: const Text('Example Detail')),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -163,18 +182,12 @@ class _ErrorPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Error'),
-      ),
+      appBar: AppBar(title: const Text('Error')),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Icon(
-              Icons.error_outline,
-              size: 80,
-              color: Colors.red,
-            ),
+            const Icon(Icons.error_outline, size: 80, color: Colors.red),
             const SizedBox(height: 24),
             Text(
               'Page Not Found',
