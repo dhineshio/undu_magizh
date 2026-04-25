@@ -56,9 +56,9 @@ class MainScaffold extends StatelessWidget {
                   isActive: navigationShell.currentIndex == 1,
                 ),
                 _buildNavItem(
-                  icon: Icons.history_outlined,
-                  activeIcon: Icons.history,
-                  label: 'History',
+                  icon: Icons.favorite_border,
+                  activeIcon: Icons.favorite,
+                  label: 'Favorites',
                   index: 2,
                   isActive: navigationShell.currentIndex == 2,
                 ),
