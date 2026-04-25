@@ -1,8 +1,9 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_sizes.dart';
+import '../../../../core/router/route_names.dart';
 import '../../../../shared/extensions/context_extensions.dart';
 import '../../../../shared/widgets/section_label.dart';
 import '../widgets/location_badge.dart';
@@ -188,8 +189,11 @@ class _ExplorePageState extends State<ExplorePage> {
   final List<Map<String, dynamic>> _exploreItems = [
     {
       'name': 'Paradise Biryani',
-      'image':
-          'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=600',
+      'images': [
+        'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=600',
+        'https://images.unsplash.com/photo-1589302168068-964664d93dc0?w=600',
+        'https://images.unsplash.com/photo-1633945274417-c5a8e7e2524?w=600',
+      ],
       'cuisine': 'Biryani, North Indian, Chinese',
       'rating': 4.3,
       'distance': '2.5 km',
@@ -200,8 +204,11 @@ class _ExplorePageState extends State<ExplorePage> {
     },
     {
       'name': 'Green Leaf Restaurant',
-      'image':
-          'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600',
+      'images': [
+        'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600',
+        'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600',
+        'https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?w=600',
+      ],
       'cuisine': 'South Indian, Pure Veg',
       'rating': 4.5,
       'distance': '1.8 km',
@@ -212,8 +219,11 @@ class _ExplorePageState extends State<ExplorePage> {
     },
     {
       'name': 'Tandoor House',
-      'image':
-          'https://images.unsplash.com/photo-1610057099443-fde8c4d50f91?w=600',
+      'images': [
+        'https://images.unsplash.com/photo-1610057099443-fde8c4d50f91?w=600',
+        'https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=600',
+        'https://images.unsplash.com/photo-1529042410759-befb1204b468?w=600',
+      ],
       'cuisine': 'North Indian, Tandoor, Kebabs',
       'rating': 4.6,
       'distance': '3.2 km',
@@ -224,8 +234,11 @@ class _ExplorePageState extends State<ExplorePage> {
     },
     {
       'name': 'Dosa Plaza',
-      'image':
-          'https://images.unsplash.com/photo-1630383249896-424e482df921?w=600',
+      'images': [
+        'https://images.unsplash.com/photo-1630383249896-424e482df921?w=600',
+        'https://images.unsplash.com/photo-1668236543090-82eba5ee5976?w=600',
+        'https://images.unsplash.com/photo-1589301773859-b9c290d63bb5?w=600',
+      ],
       'cuisine': 'South Indian, Dosa, Breakfast',
       'rating': 4.4,
       'distance': '1.5 km',
@@ -236,8 +249,11 @@ class _ExplorePageState extends State<ExplorePage> {
     },
     {
       'name': 'Spice Garden',
-      'image':
-          'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=600',
+      'images': [
+        'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=600',
+        'https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=600',
+        'https://images.unsplash.com/photo-1574484284002-952d92456975?w=600',
+      ],
       'cuisine': 'Indian, Chinese, Continental',
       'rating': 4.2,
       'distance': '2.8 km',
@@ -263,7 +279,7 @@ class _ExplorePageState extends State<ExplorePage> {
 
   void _onScroll() {
     final screenHeight = context.screenHeight;
-    final carouselHeight = screenHeight * 0.3;
+    final carouselHeight = screenHeight * 0.35;
 
     // Check if scrolled past the carousel
     final isCollapsed =
@@ -654,7 +670,7 @@ class _ExplorePageState extends State<ExplorePage> {
                 (context, index) {
                   final item = _exploreItems[index];
                   return ExploreCard(
-                    imageUrl: item['image'],
+                    images: List<String>.from(item['images']),
                     name: item['name'],
                     cuisine: item['cuisine'],
                     rating: item['rating'],
@@ -664,7 +680,7 @@ class _ExplorePageState extends State<ExplorePage> {
                     isVeg: item['isVeg'],
                     offer: item['offer'],
                     onTap: () {
-                      // Handle card tap
+                      GoRouter.of(context).push(RouteNames.foodDetails);
                     },
                   );
                 },

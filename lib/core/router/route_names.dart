@@ -10,6 +10,9 @@ class RouteNames {
   static const String orders = '/orders';
   static const String history = '/history';
   static const String profile = '/profile';
+  
+  // Food details
+  static const String foodDetails = '/food-details';
 
   // Example feature
   static const String example = '/example';

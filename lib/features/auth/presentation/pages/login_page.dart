@@ -52,7 +52,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     final screenHeight = context.screenHeight;
     final topImageHeight = screenHeight * 0.3; // 30% of screen
-    final overlayStartHeight = screenHeight * 0.2; // Start at 20%
+    final overlayStartHeight = screenHeight * 0.25; // Start at 20%
 
     return Scaffold(
       body: Stack(

@@ -4,6 +4,7 @@ import '../../features/auth/presentation/pages/login_page.dart';
 import '../../features/auth/presentation/pages/otp_page.dart';
 import '../../features/example/presentation/pages/example_page.dart';
 import '../../features/explore/presentation/pages/explore_page.dart';
+import '../../features/explore/presentation/pages/food_details_page.dart';
 import '../../features/history/presentation/pages/history_page.dart';
 import '../../features/orders/presentation/pages/orders_page.dart';
 import '../../features/profile/presentation/pages/profile_page.dart';
@@ -104,6 +105,13 @@ class AppRouter {
       path: RouteNames.example,
       name: RouteNames.example,
       builder: (context, state) => const ExamplePage(),
+    ),
+    
+    // Food details route
+    GoRoute(
+      path: RouteNames.foodDetails,
+      name: RouteNames.foodDetails,
+      builder: (context, state) => const FoodDetailsPage(),
     ),
 
     // Example detail with parameter
