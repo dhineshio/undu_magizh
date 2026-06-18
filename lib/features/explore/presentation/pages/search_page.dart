@@ -340,8 +340,8 @@ class _SearchPageState extends State<SearchPage> {
                     child: Column(
                       children: _exploreItems.map((item) {
                         return ExploreCard(
-                          imageUrl: item['image'],
-                          name: item['name'],
+                          images: [item['image'] as String],
+                          name: item['name'] as String,
                           cuisine: item['cuisine'],
                           rating: item['rating'],
                           distance: item['distance'],

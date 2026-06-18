@@ -15,42 +15,48 @@ class _HistoryPageState extends State<HistoryPage> {
   final List<Map<String, dynamic>> _favorites = [
     {
       'name': 'Paradise Biryani',
-      'imageUrl': 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=400',
+      'imageUrl':
+          'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=400',
       'rating': 4.3,
       'deliveryTime': '30 min',
       'cuisine': 'Biryani, North Indian',
     },
     {
       'name': 'Green Leaf',
-      'imageUrl': 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400',
+      'imageUrl':
+          'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400',
       'rating': 4.5,
       'deliveryTime': '20 min',
       'cuisine': 'South Indian, Pure Veg',
     },
     {
       'name': 'Tandoor House',
-      'imageUrl': 'https://images.unsplash.com/photo-1610057099443-fde8c4d50f91?w=400',
+      'imageUrl':
+          'https://images.unsplash.com/photo-1610057099443-fde8c4d50f91?w=400',
       'rating': 4.6,
       'deliveryTime': '35 min',
       'cuisine': 'Tandoor, Kebabs',
     },
     {
       'name': 'Dosa Plaza',
-      'imageUrl': 'https://images.unsplash.com/photo-1630383249896-424e482df921?w=400',
+      'imageUrl':
+          'https://images.unsplash.com/photo-1630383249896-424e482df921?w=400',
       'rating': 4.4,
       'deliveryTime': '25 min',
       'cuisine': 'South Indian, Dosa',
     },
     {
       'name': 'Spice Garden',
-      'imageUrl': 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=400',
+      'imageUrl':
+          'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=400',
       'rating': 4.2,
       'deliveryTime': '30 min',
       'cuisine': 'Chinese, Continental',
     },
     {
       'name': 'Pizza Hut',
-      'imageUrl': 'https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400',
+      'imageUrl':
+          'https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400',
       'rating': 4.0,
       'deliveryTime': '40 min',
       'cuisine': 'Pizza, Fast Food',
@@ -84,7 +90,10 @@ class _HistoryPageState extends State<HistoryPage> {
                         ),
                         IconButton(
                           onPressed: () {},
-                          icon: const Icon(Icons.search, color: AppColors.textPrimary),
+                          icon: const Icon(
+                            Icons.search,
+                            color: AppColors.textPrimary,
+                          ),
                         ),
                       ],
                     ),
@@ -112,23 +121,20 @@ class _HistoryPageState extends State<HistoryPage> {
                   crossAxisSpacing: AppSizes.spaceM,
                   mainAxisSpacing: AppSizes.spaceM,
                 ),
-                delegate: SliverChildBuilderDelegate(
-                  (context, index) {
-                    final restaurant = _favorites[index];
-                    return FavoriteRestaurantCard(
-                      name: restaurant['name'],
-                      imageUrl: restaurant['imageUrl'],
-                      rating: restaurant['rating'],
-                      deliveryTime: restaurant['deliveryTime'],
-                      cuisine: restaurant['cuisine'],
-                      onTap: () {},
-                    );
-                  },
-                  childCount: _favorites.length,
-                ),
+                delegate: SliverChildBuilderDelegate((context, index) {
+                  final restaurant = _favorites[index];
+                  return FavoriteRestaurantCard(
+                    name: restaurant['name'],
+                    imageUrl: restaurant['imageUrl'],
+                    rating: restaurant['rating'],
+                    deliveryTime: restaurant['deliveryTime'],
+                    cuisine: restaurant['cuisine'],
+                    onTap: () {},
+                  );
+                }, childCount: _favorites.length),
               ),
             ),
-            
+
             // Bottom Spacing
             const SliverToBoxAdapter(child: SizedBox(height: 100)),
           ],

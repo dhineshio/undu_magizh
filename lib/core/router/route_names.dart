@@ -27,7 +27,6 @@ class RouteNames {
   // Settings
   static const String editProfile = '/edit-profile';
   static const String settings = '/settings';
-  static const String foodDetails = '/food-details';
   static const String search = '/search';
 
   // Add your feature routes here

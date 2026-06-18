@@ -4,7 +4,7 @@ import '../../../../core/constants/app_sizes.dart';
 
 /// Food details page with image carousel and information
 class FoodDetailsPage extends StatefulWidget {
-  const FoodDetailsPage({super.key});
+  const FoodDetailsPage({super.key, required Map<String, dynamic> foodData});
 
   @override
   State<FoodDetailsPage> createState() => _FoodDetailsPageState();

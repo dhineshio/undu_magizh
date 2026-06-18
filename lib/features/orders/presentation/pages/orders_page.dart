@@ -3,6 +3,7 @@ import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_sizes.dart';
 import '../widgets/active_order_card.dart';
 import '../widgets/order_card.dart';
+import 'order_details_page.dart';
 
 /// Premium User-App Orders Page
 class OrdersPage extends StatefulWidget {
@@ -161,12 +162,25 @@ class _OrdersPageState extends State<OrdersPage> with SingleTickerProviderStateM
       itemCount: filteredOrders.length,
       itemBuilder: (context, index) {
         final order = filteredOrders[index];
-        return ActiveOrderCard(
-          restaurantName: order['restaurantName'],
-          status: order['status'],
-          imageUrl: order['imageUrl'],
-          estimatedTime: order['estimatedTime'],
-          progress: order['progress'],
+        return GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => OrderDetailsPage(
+                  orderData: order,
+                  isActive: true,
+                ),
+              ),
+            );
+          },
+          child: ActiveOrderCard(
+            restaurantName: order['restaurantName'],
+            status: order['status'],
+            imageUrl: order['imageUrl'],
+            estimatedTime: order['estimatedTime'],
+            progress: order['progress'],
+          ),
         );
       },
     );
@@ -190,15 +204,28 @@ class _OrdersPageState extends State<OrdersPage> with SingleTickerProviderStateM
       itemCount: filteredOrders.length,
       itemBuilder: (context, index) {
         final order = filteredOrders[index];
-        return OrderCard(
-          restaurantName: order['restaurantName'],
-          imageUrl: order['imageUrl'],
-          items: order['items'],
-          date: order['date'],
-          amount: order['amount'],
-          status: order['status'],
-          onReorder: () {},
-          onRate: () {},
+        return GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => OrderDetailsPage(
+                  orderData: order,
+                  isActive: false,
+                ),
+              ),
+            );
+          },
+          child: OrderCard(
+            restaurantName: order['restaurantName'],
+            imageUrl: order['imageUrl'],
+            items: order['items'],
+            date: order['date'],
+            amount: order['amount'],
+            status: order['status'],
+            onReorder: () {},
+            onRate: () {},
+          ),
         );
       },
     );
